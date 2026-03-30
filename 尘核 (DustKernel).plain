@@ -1,0 +1,359 @@
+{
+  "port": 7892,
+  "socks-port": 7893,
+  "mixed-port": 7890,
+  "allow-lan": true,
+  "bind-address": "*",
+  "find-process-mode": "off",
+  "mode": "rule",
+  "geodata-mode": false,
+  "geodata-loader": "memconservative",
+  "geox-url": {
+    "geoip": "https://jsd.onmicrosoft.cn/gh/MetaCubeX/meta-rules-dat@release/geoip.dat",
+    "geosite": "https://jsd.onmicrosoft.cn/gh/MetaCubeX/meta-rules-dat@release/geosite.dat",
+    "mmdb": "https://jsd.onmicrosoft.cn/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb",
+    "asn": "https://jsd.onmicrosoft.cn/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb"
+  },
+  "geo-auto-update": true,
+  "geo-update-interval": 24,
+  "geosite-matcher": "succinct",
+  "global-ua": "clash.meta",
+  "etag-support": true,
+  "log-level": "info",
+  "ipv6": true,
+  "external-controller": "0.0.0.0:9090",
+  "secret": "",
+  "external-controller-cors": {
+    "allow-origins": ["*"],
+    "allow-private-network": true
+  },
+  "unified-delay": true,
+  "tcp-concurrent": true,
+  "external-ui": "ui",
+  "external-ui-name": "xd",
+  "external-ui-url": "https://ghfast.top/github.com/Zephyruso/zashboard/releases/latest/download/dist.zip",
+  "external-doh-server": "/dns-query",
+  "disable-keep-alive": true,
+  "keep-alive-idle": 15,
+  "keep-alive-interval": 15,
+  "experimental": {
+    "quic-go-disable-gso": false,
+    "quic-go-disable-ecn": false,
+    "dialer-ip4p-convert": false
+  },
+  "hosts": {
+    "dns.alidns.com": ["223.5.5.5", "223.6.6.6", "2400:3200::1", "2400:3200:baba::1"],
+    "dns.google": ["8.8.4.4", "8.8.8.8", "2001:4860:4860::8844", "2001:4860:4860::8888"]
+  },
+  "profile": {
+    "store-selected": true,
+    "store-fake-ip": true
+  },
+  "ntp": {
+    "enable": false,
+    "write-to-system": false,
+    "server": "ntp.ntsc.ac.cn",
+    "port": 123,
+    "interval": 30
+  },
+  "sniffer": {
+    "enable": true,
+    "force-dns-mapping": false,
+    "parse-pure-ip": false,
+    "override-destination": false,
+    "sniff": {
+      "HTTP": { "ports": [80, "8080-8880"], "override-destination": true },
+      "TLS": { "ports": [443, 8443] },
+      "QUIC": { "ports": [443, 8443] }
+    },
+    "force-domain": ["+.v2ex.com"],
+    "skip-domain": ["Mijia.Cloud.com"],
+    "skip-src-address": ["192.168.0.3/32"],
+    "skip-dst-address": ["192.168.0.3/32"]
+  },
+  "tun": {
+    "enable": true,
+    "stack": "gvisor",
+    "auto-route": true,
+    "auto-detect-interface": true,
+    "dns-hijack": ["any:53", "tcp://any:53"],
+    "device": "mihomo",
+    "mtu": 1500,
+    "strict-route": true,
+    "gso": true,
+    "gso-max-size": 65536,
+    "udp-timeout": 300,
+    "endpoint-independent-nat": false
+  },
+  "dns": {
+    "enable": true,
+    "cache-algorithm": "arc",
+    "prefer-h3": false,
+    "use-hosts": true,
+    "use-system-hosts": true,
+    "respect-rules": false,
+    "listen": "0.0.0.0:1053",
+    "ipv6": true,
+    "default-nameserver": ["223.5.5.5", "8.8.8.8"],
+    "enhanced-mode": "redir-host",
+    "fake-ip-range": "198.18.0.1/16",
+    "fake-ip-filter-mode": "blacklist",
+    "fake-ip-filter": ["RULE-SET,direct"],
+    "nameserver-policy": {
+      "RULE-SET,direct": ["quic://dns.alidns.com"]
+    },
+    "nameserver": ["https://doh.cmliussss.net/CMLiussss"],
+    "proxy-server-nameserver": ["https://doh.cmliussss.net/CMLiussss"],
+    "direct-nameserver": ["quic://dns.alidns.com"],
+    "direct-nameserver-follow-policy": true
+  },
+  "rule-providers": {
+    "reject": {
+      "type": "http",
+      "behavior": "domain",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/reject.txt",
+      "path": "./ruleset/loyalsoldier/reject.yaml",
+      "interval": 86400
+    },
+    "icloud": {
+      "type": "http",
+      "behavior": "domain",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/icloud.txt",
+      "path": "./ruleset/loyalsoldier/icloud.yaml",
+      "interval": 86400
+    },
+    "apple": {
+      "type": "http",
+      "behavior": "domain",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/apple.txt",
+      "path": "./ruleset/loyalsoldier/apple.yaml",
+      "interval": 86400
+    },
+    "google": {
+      "type": "http",
+      "behavior": "domain",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/google.txt",
+      "path": "./ruleset/loyalsoldier/google.yaml",
+      "interval": 86400
+    },
+    "proxy": {
+      "type": "http",
+      "behavior": "domain",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/proxy.txt",
+      "path": "./ruleset/loyalsoldier/proxy.yaml",
+      "interval": 86400
+    },
+    "direct": {
+      "type": "http",
+      "behavior": "domain",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/direct.txt",
+      "path": "./ruleset/loyalsoldier/direct.yaml",
+      "interval": 86400
+    },
+    "private": {
+      "type": "http",
+      "behavior": "domain",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/private.txt",
+      "path": "./ruleset/loyalsoldier/private.yaml",
+      "interval": 86400
+    },
+    "gfw": {
+      "type": "http",
+      "behavior": "domain",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/gfw.txt",
+      "path": "./ruleset/loyalsoldier/gfw.yaml",
+      "interval": 86400
+    },
+    "telegramcidr": {
+      "type": "http",
+      "behavior": "ipcidr",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/telegramcidr.txt",
+      "path": "./ruleset/loyalsoldier/telegramcidr.yaml",
+      "interval": 86400
+    },
+    "cncidr": {
+      "type": "http",
+      "behavior": "ipcidr",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/cncidr.txt",
+      "path": "./ruleset/loyalsoldier/cncidr.yaml",
+      "interval": 86400
+    },
+    "applications": {
+      "type": "http",
+      "behavior": "classical",
+      "url": "https://raw.githubusercontent.com/Loyalsoldier/clash-rules/release/applications.txt",
+      "path": "./ruleset/loyalsoldier/applications.yaml",
+      "interval": 86400
+    }
+  },
+  "proxy-providers": {
+    "liangxin": {
+      "type": "http",
+      "url": "https://liangxin.xyz/api/v1/liangxin?OwO=726852e40895af70dc5dbf3fb3c0abca",
+      "interval": 86400,
+      "path": "./providers/liangxin.yaml",
+      "health-check": {
+        "enable": true,
+        "url": "https://www.gstatic.com/generate_204",
+        "interval": 300
+      }
+    }
+  },
+  "proxies": [
+    {
+      "type": "vless",
+      "name": "🇯🇵JP Softbank[PL]",
+      "server": "82.40.46.126",
+      "port": 59016,
+      "uuid": "2af8229e-52f1-426c-92ff-61111df8c76a",
+      "tls": true,
+      "flow": "xtls-rprx-vision",
+      "client-fingerprint": "chrome",
+      "skip-cert-verify": false,
+      "reality-opts": { "public-key": "3RhiIr0-JaOGCcrwAFbE9_wDcd8aFyWevpf2ZO4nUwk", "short-id": "2f361cb3" },
+      "network": "tcp",
+      "servername": "acck-jp.999329.xyz"
+    },
+    {
+      "type": "vless",
+      "name": "🇯🇵JP 懒猫云[PL]",
+      "server": "23.249.25.61",
+      "port": 33992,
+      "uuid": "19789a6a-f36c-4832-97d1-b7bd7c44363a",
+      "tls": true,
+      "flow": "xtls-rprx-vision",
+      "client-fingerprint": "chrome",
+      "skip-cert-verify": false,
+      "reality-opts": { "public-key": "NvW0dLRRQxzOSSVG85szc_RefeLf16wJydJ4Pzwoiy4", "short-id": "0e677fd6" },
+      "network": "tcp",
+      "encryption": "none",
+      "servername": "lmy.999329.xyz"
+    },
+    {
+      "type": "vless",
+      "name": "🇺🇸US Bandwagonhost Tri[PL]",
+      "server": "usbwg.dns.army",
+      "port": 13421,
+      "uuid": "02e267bb-05c3-4fbc-a992-11403cf76778",
+      "tls": true,
+      "flow": "xtls-rprx-vision",
+      "client-fingerprint": "chrome",
+      "skip-cert-verify": false,
+      "reality-opts": { "public-key": "0JfS5sEuB6B28dqMbAw8anxIgNHG9_lR7kuCuDM0LyE", "short-id": "1b4e12dc3f" },
+      "network": "tcp",
+      "encryption": "none",
+      "servername": "www.apple.com"
+    },
+    {
+      "type": "vless",
+      "name": "🇺🇸US CloudCone Dc02[PL]",
+      "server": "74.48.96.118",
+      "port": 35094,
+      "uuid": "77b19dd2-2019-4844-b515-6131af9af576",
+      "tls": true,
+      "flow": "xtls-rprx-vision",
+      "client-fingerprint": "chrome",
+      "skip-cert-verify": false,
+      "reality-opts": { "public-key": "m1YKfb6JsDS6M-QIFki0UcpLLovS2xDUyHqutj-p9So", "short-id": "c082e584" },
+      "network": "tcp",
+      "encryption": "none",
+      "servername": "cc-us.999329.xyz"
+    },
+    {
+      "type": "hysteria2",
+      "name": "🇺🇸US CloudCone Dc02[QH]",
+      "server": "74.48.96.118",
+      "port": 47973,
+      "password": "ntCiEfetATs82vdM",
+      "sni": "cc-us.999329.xyz",
+      "skip-cert-verify": true,
+      "tfo": false
+    }
+  ],
+  "proxy-groups": [
+    { "name": "🚀 节点选择", "type": "select", "proxies": ["♻️ 自动选择", "🇯🇵 日本节点", "🇺🇲 美国节点", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇸🇬 新加坡节点", "🇰🇷 韩国节点", "🚀 手动切换", "DIRECT"] },
+    { "name": "🚀 手动切换", "include-all": true, "type": "select", "use": ["liangxin"] },
+    { "name": "♻️ 自动选择", "type": "url-test", "include-all": true, "interval": 300, "tolerance": 50, "use": ["liangxin"] },
+    { "name": "📲 电报消息", "type": "select", "proxies": ["🇯🇵 日本节点", "🚀 节点选择"] },
+    { "name": "🤖 AI 服务", "type": "select", "proxies": ["🇺🇲 AI专属", "🚀 节点选择"] },
+    { "name": "📹 油管视频", "type": "select", "proxies": ["🚀 节点选择", "♻️ 自动选择", "🇯🇵 日本节点", "🇺🇲 美国节点", "🚀 手动切换", "DIRECT"] },
+    { "name": "🎬 Emby", "type": "select", "proxies": ["🚀 节点选择", "♻️ 自动选择", "🇯🇵 日本节点", "🇺🇲 美国节点", "🎯 全球直连"] },
+    { "name": "🎥 奈飞视频", "type": "select", "proxies": ["🚀 节点选择", "♻️ 自动选择", "🇯🇵 日本节点", "🇺🇲 美国节点", "🚀 手动切换", "DIRECT"] },
+    { "name": "🎮 Twitch", "type": "select", "proxies": ["🇺🇲 美国节点", "🚀 节点选择"] },
+    { "name": "🔍 谷歌服务", "type": "select", "proxies": ["🇺🇲 美国节点", "🚀 节点选择"] },
+    { "name": "📺 巴哈姆特", "type": "select", "proxies": ["🚀 节点选择", "🚀 手动切换", "DIRECT"] },
+    { "name": "📺 哔哩哔哩", "type": "select", "proxies": ["🎯 全球直连", "🚀 节点选择"] },
+    { "name": "🌍 国外媒体", "type": "select", "proxies": ["🚀 节点选择", "♻️ 自动选择", "🇯🇵 日本节点", "🇺🇲 美国节点", "🚀 手动切换", "DIRECT"] },
+    { "name": "🌏 国内媒体", "type": "select", "proxies": ["DIRECT", "🚀 手动切换"] },
+    { "name": "📢 谷歌FCM", "type": "select", "proxies": ["DIRECT", "🚀 节点选择", "🇺🇲 美国节点", "🇯🇵 日本节点", "🚀 手动切换"] },
+    { "name": "Ⓜ️ 微软Bing", "type": "select", "proxies": ["DIRECT", "🚀 节点选择", "🇺🇲 美国节点", "🇯🇵 日本节点", "🚀 手动切换"] },
+    { "name": "Ⓜ️ 微软云盘", "type": "select", "proxies": ["DIRECT", "🚀 节点选择", "🇺🇲 美国节点", "🇯🇵 日本节点", "🚀 手动切换"] },
+    { "name": "Ⓜ️ 微软服务", "type": "select", "proxies": ["DIRECT", "🚀 节点选择", "🇺🇲 美国节点", "🇯🇵 日本节点", "🚀 手动切换"] },
+    { "name": "🍎 苹果服务", "type": "select", "proxies": ["DIRECT", "🚀 节点选择", "🇺🇲 美国节点", "🇯🇵 日本节点", "🚀 手动切换"] },
+    { "name": "🎮 游戏平台", "type": "select", "proxies": ["DIRECT", "🚀 节点选择", "🇺🇲 美国节点", "🇯🇵 日本节点", "🚀 手动切换"] },
+    { "name": "🎶 网易音乐", "type": "select", "include-all": true, "filter": "(?i)网易|音乐|NetEase|Music", "proxies": ["DIRECT", "🚀 节点选择", "♻️ 自动选择"] },
+    { "name": "🎯 全球直连", "type": "select", "proxies": ["DIRECT", "🚀 节点选择", "♻️ 自动选择"] },
+    { "name": "🛑 广告拦截", "type": "select", "proxies": ["REJECT", "DIRECT"] },
+    { "name": "🍃 应用净化", "type": "select", "proxies": ["REJECT", "DIRECT"] },
+    { "name": "🐟 漏网之鱼", "type": "select", "proxies": ["🚀 节点选择", "♻️ 自动选择", "DIRECT", "🚀 手动切换"] },
+    { "name": "🇯🇵 日本节点", "include-all": true, "filter": "(?i)日本|川日|东京|大阪|Jp|Japan", "type": "select", "use": ["liangxin"] },
+    { "name": "🇺🇲 美国节点", "include-all": true, "filter": "(?i)美|波特兰|达拉斯|俄勒冈|US|United States", "type": "select", "use": ["liangxin"] },
+    { "name": "🇭🇰 香港节点", "include-all": true, "use": ["liangxin"], "filter": "(?i)香港|沪港|HK|Hong Kong", "type": "select" },
+    { "name": "🇹🇼 台湾节点", "include-all": true, "use": ["liangxin"], "filter": "(?i)台湾|台北|TW|Taiwan", "type": "select" },
+    { "name": "🇸🇬 新加坡节点", "include-all": true, "use": ["liangxin"], "filter": "(?i)新加坡|SG|Singapore", "type": "select" },
+    { "name": "🇰🇷 韩国节点", "include-all": true, "use": ["liangxin"], "filter": "(?i)韩国|首尔|KR|Korea", "type": "select" },
+    { "name": "🇺🇲 AI专属", "include-all": true, "filter": "(?i)US|Bandwagonhost", "type": "select" }
+  ],
+  "rules": [
+    "RULE-SET,applications,🎯 全球直连",
+    "RULE-SET,private,🎯 全球直连",
+    "RULE-SET,reject,🛑 广告拦截",
+    "DOMAIN-SUFFIX,segment.io,🛑 广告拦截",
+    "DOMAIN-SUFFIX,datadoghq.com,🛑 广告拦截",
+    "DOMAIN-SUFFIX,sentry.io,🛑 广告拦截",
+    "DOMAIN-SUFFIX,statsig.com,🛑 广告拦截",
+    "DOMAIN-SUFFIX,launchdarkly.com,🛑 广告拦截",
+    "DOMAIN-SUFFIX,usefathom.com,🛑 广告拦截",
+    "DOMAIN-SUFFIX,anthropic.com,🤖 AI 服务",
+    "DOMAIN-SUFFIX,claude.ai,🤖 AI 服务",
+    "DOMAIN-SUFFIX,gemini.google.com,🤖 AI 服务",
+    "DOMAIN-SUFFIX,google.dev,🤖 AI 服务",
+    "DOMAIN-SUFFIX,ai.google,🤖 AI 服务",
+    "DOMAIN-SUFFIX,aistudio.google.com,🤖 AI 服务",
+    "DOMAIN-KEYWORD,gemini,🤖 AI 服务",
+    "DOMAIN-SUFFIX,generativelanguage.googleapis.com,🤖 AI 服务",
+    "DOMAIN-SUFFIX,copilot.microsoft.com,🤖 AI 服务",
+    "DOMAIN-SUFFIX,perplexity.ai,🤖 AI 服务",
+    "DOMAIN-SUFFIX,x.ai,🤖 AI 服务",
+    "DOMAIN-SUFFIX,grok.com,🤖 AI 服务",
+    "DOMAIN-SUFFIX,mobaiemby.site,🎬 Emby",
+    "DOMAIN-SUFFIX,embymv.link,🎬 Emby",
+    "DOMAIN-SUFFIX,lite.cn2gias.uk,🎬 Emby",
+    "DOMAIN-SUFFIX,emos.best,🎬 Emby",
+    "DOMAIN-SUFFIX,emby.pilipiliultra.com,🎬 Emby",
+    "DOMAIN-SUFFIX,ext-twitch.tv,🎮 Twitch",
+    "DOMAIN-SUFFIX,jtvnw.net,🎮 Twitch",
+    "DOMAIN-SUFFIX,ttvnw.net,🎮 Twitch",
+    "DOMAIN-SUFFIX,twitch.tv,🎮 Twitch",
+    "DOMAIN-SUFFIX,twitchcdn.net,🎮 Twitch",
+    "DOMAIN-KEYWORD,ttvnw,🎮 Twitch",
+    "DOMAIN-SUFFIX,roblox.com,🎮 游戏平台",
+    "DOMAIN-SUFFIX,roblox.com.cn,🎮 游戏平台",
+    "DOMAIN-SUFFIX,rbxcdn.com,🎮 游戏平台",
+    "DOMAIN-SUFFIX,robloxlabs.com,🎮 游戏平台",
+    "DOMAIN-SUFFIX,999329.xyz,🎯 全球直连",
+    "DOMAIN-SUFFIX,222329.xyz,🎯 全球直连",
+    "RULE-SET,icloud,🍎 苹果服务",
+    "RULE-SET,apple,🍎 苹果服务",
+    "RULE-SET,google,🔍 谷歌服务",
+    "RULE-SET,telegramcidr,📲 电报消息",
+    "RULE-SET,proxy,🚀 节点选择",
+    "RULE-SET,gfw,🚀 节点选择",
+    "RULE-SET,direct,🎯 全球直连",
+    "GEOIP,LAN,🎯 全球直连,no-resolve",
+    "GEOIP,CN,🎯 全球直连,no-resolve",
+    "RULE-SET,cncidr,🎯 全球直连,no-resolve",
+    "MATCH,🐟 漏网之鱼"
+  ],
+  "sub-rules": {}
+}
