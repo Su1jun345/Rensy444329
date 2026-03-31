@@ -13,14 +13,14 @@
         "geosite": "https://jsd.onmicrosoft.cn/gh/MetaCubeX/meta-rules-dat@release/geosite.dat",
         "mmdb": "https://jsd.onmicrosoft.cn/gh/MetaCubeX/meta-rules-dat@release/geoip.metadb",
         "asn": "https://jsd.onmicrosoft.cn/gh/MetaCubeX/meta-rules-dat@release/GeoLite2-ASN.mmdb"
-    },
+    }，
     "geo-auto-update": true,
     "geo-update-interval": 24,
     "geosite-matcher": "succinct",
     "global-ua": "clash.meta",
-    "etag-support": true,
-    "log-level": "info",
-    "ipv6": true,
+    "etag-support": true，
+    "log-level": "info"，
+    "ipv6": true，
     "external-controller": "0.0.0.0:9090",
     "secret": "",
     "external-controller-cors": {
@@ -28,7 +28,7 @@
             "*"
         ],
         "allow-private-network": true
-    },
+    }，
     "unified-delay": true,
     "tcp-concurrent": true,
     "external-ui": "ui",
