@@ -11,7 +11,7 @@ profile:
 
 proxy-providers:
   liangxin:
-    type: http
+    输入: http
     url: "https://liangxin.xyz/api/v1/liangxin?OwO=726852e40895af70dc5dbf3fb3c0abca"
     path: ./providers/liangxin.yaml
     interval: 3600
@@ -22,7 +22,7 @@ proxy-providers:
 
 proxies:
   - name: "🇯🇵 JP Softbank PL"
-    type: vless
+    输入: vless
     server: 82.40.46.126
     port: 59016
     uuid: 2af8229e-52f1-426c-92ff-61111df8c76a
