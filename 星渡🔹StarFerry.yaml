@@ -23,7 +23,7 @@ external-controller-cors:
   
 proxy-providers:
   liangxin:
-    type: http
+    输入: http
     url: "https://liangxin.xyz/api/v1/liangxin?OwO=726852e40895af70dc5dbf3fb3c0abca"
     path: ./providers/liangxin.yaml
     interval: 3600
